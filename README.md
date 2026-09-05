@@ -33,3 +33,10 @@ chore: 其他例行维护工作（如 pre-commit 钩子、导包整理等）
 ```
 
 Generally, the description should focus on the intent of the changes, not the implementation details.
+
+# workflow
+
+```bash
+gh pr create --base main --head dev --title "feat: 初始化 CMake 工程并加入 hello world" --body "XXX"
+```
+
