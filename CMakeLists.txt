@@ -18,7 +18,9 @@ option(BUILD_WHY_USE_FUNCTIONS "Build the why_use_functions executable" OFF)
 option(BUILD_FORWARD_DECLARE "Build the forward_declare executable" OFF)
 option(BUILD_ODR_VIOLATE "Build the odr_violate executable" OFF)
 option(BUILD_FORWARD_DECLARE_ACROSS_FILES "Build the forward declare acoss files" OFF)
-option(BUILD_CURLY_BRACES_AND_INDENTED_CODE "Build the curly_braces_and_indented_code executable" ON)
+option(BUILD_CURLY_BRACES_AND_INDENTED_CODE "Build the curly_braces_and_indented_code executable" OFF)
+option(BUILD_MARCO_DEFINE_SCOPE "Build the marco define across multi files and see scope" OFF)
+option(BUILD_ADD_TWO_NUM "Build add two num" ON)
 
 
 
@@ -79,4 +81,20 @@ endif()
 
 if(BUILD_CURLY_BRACES_AND_INDENTED_CODE)
   add_executable(curly_braces_and_indented_code apps/ch2/curly_braces_and_indented_code.cpp)
+endif()
+
+if(BUILD_MARCO_DEFINE_SCOPE)
+  add_executable(marco_define_scope 
+    apps/ch2/marco_define_scope/function.cpp
+    apps/ch2/marco_define_scope/main.cpp
+    )
+endif()
+
+if(BUILD_ADD_TWO_NUM)
+  add_executable( add_two_num
+    apps/ch2/add_two_nums/main.cpp
+    apps/ch2/add_two_nums/io.cpp
+    apps/ch2/add_two_nums/readNumber.cpp
+    apps/ch2/add_two_nums/writeAnswer.cpp
+  )
 endif()
