@@ -20,7 +20,10 @@ option(BUILD_ODR_VIOLATE "Build the odr_violate executable" OFF)
 option(BUILD_FORWARD_DECLARE_ACROSS_FILES "Build the forward declare acoss files" OFF)
 option(BUILD_CURLY_BRACES_AND_INDENTED_CODE "Build the curly_braces_and_indented_code executable" OFF)
 option(BUILD_MARCO_DEFINE_SCOPE "Build the marco define across multi files and see scope" OFF)
-option(BUILD_ADD_TWO_NUM "Build add two num" ON)
+option(BUILD_ADD_TWO_NUM "Build add two num" OFF)
+option(BUILD_PLOGD "Build the plogd executable" OFF)
+option(BUILD_SUPPOSED_ADD_TWO_NUMS "Build the supposed_add_two_nums executable" OFF)
+option(BUILD_CALL_STACK "Build the call stack executable" ON)
 
 
 
@@ -97,4 +100,27 @@ if(BUILD_ADD_TWO_NUM)
     apps/ch2/add_two_nums/readNumber.cpp
     apps/ch2/add_two_nums/writeAnswer.cpp
   )
+endif()
+
+if(BUILD_PLOGD)
+  include(FetchContent)
+  set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+  FetchContent_Declare(
+    plog
+    GIT_REPOSITORY https://github.com/SergiusTheBest/plog.git
+    GIT_TAG 1.1.10
+    GIT_SHALLOW TRUE
+  )
+  FetchContent_MakeAvailable(plog)
+
+  add_executable(plogd apps/ch3/plogd.cpp)
+  target_link_libraries(plogd PRIVATE plog::plog)
+endif()
+
+if(BUILD_SUPPOSED_ADD_TWO_NUMS)
+  add_executable(supposed_add_two_nums apps/ch3/supposed_add_two_nums.cpp)
+endif()
+
+if(BUILD_CALL_STACK)
+  add_executable(call_stack apps/ch3/call_stack.cpp)
 endif()
